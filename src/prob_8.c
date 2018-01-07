@@ -30,10 +30,16 @@ int myAtoi(char *str)
 	} else {
 		d = 1;
 	}
+	int digit = 0;
 	for (int i = start; str[i] != '\0'; ++i) {
-		if (isNum(str[i]))
+		if (isNum(str[i])) {
 			n = n * 10 + str[i] - '0';
-		else
+			++digit;
+		} else {
+			break;
+		}
+		// overfloat
+		if (digit > 10)
 			break;
 	}
 	if (n < INT_MIN || n > INT_MAX) {
@@ -47,7 +53,7 @@ int myAtoi(char *str)
 
 int main()
 {
-	char s[] = "9223372036854775809";
+	char s[] = "18446744073709551617";
 	printf("%d\n", myAtoi(s));
 	return 0;
 }
