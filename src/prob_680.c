@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int validPalindromeNoDup(char *s, char from, char to)
+int isPalindrome(char *s, int from, int to)
 {
 	char *i, *j;
 	for (i = s + from, j = s + to; i < j; ++i, --j) {
@@ -21,13 +21,9 @@ int validPalindrome(char *s)
 	int j = strlen(s) - 1;
 
 	while (i < j) {
-		printf("%c %c\t", s[i], s[j]);
 		if (s[i] != s[j]) {
-			int a = validPalindromeNoDup(s, i + 1, j);
-			int b = validPalindromeNoDup(s, i, j - 1);
-			if (a == 1 || b == 1)
-				return 1;
-			return 0;
+			return isPalindrome(s, i + 1, j) ||
+			       isPalindrome(s, i, j - 1);
 		} else {
 			++i, --j;
 		}
@@ -37,22 +33,5 @@ int validPalindrome(char *s)
 
 int main()
 {
-	char t[] = "vkjtmxzlpurgthxqxvokfcvdjgpvryculxhmyqbwyiogzcrwghbbssessgp"
-		   "bwdyfjjtobigtnmmrvkfixfjoknpsixljlhhruwllvsvekeiwqqkezjwffx"
-		   "qspfzikxftycyorrjyhnojdabogmdttzgxpyliwcadpfaqprfvwhsrkngqo"
-		   "xisvjjeivmypzzevoyznekbiowuoiuadgwtkcujkvsgeiwhwrnzdywuuvco"
-		   "luuywljnacgoyezzeyogcanjlwyuulocvuuwydznrwhwiegsvkjucktwgda"
-		   "uiouwoibkenzyovezzpymviejjvsixoqgnkrshwvfrpqafpdacwilypxgzt"
-		   "tdmgobadjonhyjrroycytfxkizfpsqxffwjzekqqwiekevsvllwurhhljyl"
-		   "xispnojfxifkvrmmntgibotjjfydwbpgssessbbhgwrczgoiywbqymhxluc"
-		   "yrvpgjdvcfkovxqxhtgruplzxmtjkv";
-	char s[] = "knpsixljlhhruwllvsvekeiwqqkezjwffx"
-		   "qspfzikxftycyorrjyhnojdabogmdttzgxpyliwcadpfaqprfvwhsrkngqo"
-		   "xisvjjeivmypzzevoyznekbiowuoiuadgwtkcujkvsgeiwhwrnzdywuuvco"
-		   "luuywljnacgoyezzeyogcanjlwyuulocvuuwydznrwhwiegsvkjucktwgda"
-		   "uiouwoibkenzyovezzpymviejjvsixoqgnkrshwvfrpqafpdacwilypxgzt"
-		   "tdmgobadjonhyjrroycytfxkizfpsqxffwjzekqqwiekevsvllwurhhljyl"
-		   "xispn";
-	printf("%d\n", validPalindrome(t));
 	return 0;
 }
