@@ -17,25 +17,55 @@ struct ListNode *init(int val)
 	temp->next = NULL;
 	return temp;
 }
+
+int lenNode(struct ListNode *head)
+{
+	int len = 0;
+	struct ListNode *p = head;
+	while (p) {
+		++len;
+		p = p->next;
+	}
+	return len;
+}
+
 struct ListNode *rotateRight(struct ListNode *head, int k)
 {
+	if (!head || !(head->next))
+		return head;
+	k %= lenNode(head);
+	if (k < 1)
+		return head;
+
+	struct ListNode *prev = head;
+	struct ListNode *cur = head;
+	while (k > 0) {
+		cur = cur->next;
+		--k;
+	}
+	while (cur && cur->next) {
+		prev = prev->next;
+		cur = cur->next;
+	}
+	// rotate
+	if (cur) {
+		struct ListNode *newHead = prev->next;
+		prev->next = cur->next;
+		cur->next = head;
+		return newHead;
+	}
+	return head;
 }
 
 typedef struct ListNode *pNode;
 
 int main()
 {
-	pNode p0 = init(2);
-	pNode p1 = init(1);
-	pNode p2 = init(1);
-	pNode p3 = init(1);
-	pNode p4 = init(1);
+	pNode p0 = init(1);
+	pNode p1 = init(2);
 	p0->next = p1;
-	p1->next = p2;
-	p2->next = p3;
-	p3->next = p4;
 
-	pNode p = removeElements(p0, 1);
+	pNode p = rotateRight(p0, 200000);
 	while (p) {
 		printf("%d\n", p->val);
 		p = p->next;
@@ -43,9 +73,5 @@ int main()
 
 	free(p0);
 	free(p1);
-	free(p2);
-	free(p3);
-	free(p4);
-
 	return 0;
 }
