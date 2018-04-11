@@ -1,5 +1,5 @@
-# Second Highest Salary
-# Find MAX in set where that set < MAX everything
+-- Second Highest Salary
+-- Find MAX in set where that set < MAX everything
 
 SELECT MAX(Salary) as SecondHighestSalary
 FROM Employee

@@ -1,6 +1,6 @@
-# 185. Department Top Three Salaries
-# Top 3 mean, only < 3 salary higher than your's
-# salary can be duplicate 100, 90, 90
+-- 185. Department Top Three Salaries
+-- Top 3 mean, only < 3 salary higher than your's
+-- salary can be duplicate 100, 90, 90
 
 SELECT d.Name as Department, e.Name as Employee, e.Salary
 FROM Employee e JOIN Department d on e.DepartmentId = d.Id

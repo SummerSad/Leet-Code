@@ -1,4 +1,4 @@
-# 184. Department Highest Salary
+-- 184. Department Highest Salary
 
 SELECT d.Name as Department, e.Name as Employee, e.Salary
 FROM Employee e JOIN Department d on e.DepartmentId = d.Id

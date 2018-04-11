@@ -1,4 +1,4 @@
-# Duplicate Emails
+-- Duplicate Emails
 
 SELECT DISTINCT p.Email
 FROM Person p JOIN Person q on p.Email = q.Email

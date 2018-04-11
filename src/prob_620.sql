@@ -1,4 +1,4 @@
-# Not Boring Movies
+-- Not Boring Movies
 
 SELECT *
 FROM cinema

@@ -1,4 +1,4 @@
-# 180. Consecutive Numbers
+-- 180. Consecutive Numbers
 
 SELECT DISTINCT l1.Num as ConsecutiveNums
 FROM Logs l1 JOIN Logs l2 on l1.Id + 1 = l2.Id

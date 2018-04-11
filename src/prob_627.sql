@@ -1,4 +1,4 @@
-# Swap Salary
+-- Swap Salary
 
 UPDATE salary
     	SET sex = CASE
